@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body {
+    font-family: "Helevetica", Arial;
+}
+
+section {
+    text-align: center;
+}
+
+table,td,th
+{
+border:2px solid #ecd7ba;
+margin-left: 430px;
+margin-top: 50px;
+height: 80px;
+}
+
+table
+{
+width:30%;
+}
+
+td 
+{
+	
+	color: black;
+	height: 120px;
+	font-family:Verdana;
+	font-size: 300%;
+	text-align: center;
+}
+
+h1{
+
+text-align: center;
+vertical-align: middle;
+position: relative;
+font-size: 200%;
+}
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<script src="tictac.js"></script>
+
+
+
+
+
+
+<table>
+<tr>
+<td id="square1" style= "width: 50px" onclick="clickerAI('square1')"></td>
+<td id="square2" style= "width: 50px"onclick="clickerAI('square2')"></td>
+<td id="square3" style= "width: 50px"onclick="clickerAI('square3')"></td>
+</tr>
+<tr>
+<td id="square4"style= "width: 50px" onclick="clickerAI('square4')"></td>
+<td id="square5" style= "width: 50px"onclick="clickerAI('square5')"></td>
+<td id="square6" style= "width: 50px"onclick="clickerAI('square6')"></td>
+</tr>
+<tr>
+<td id="square7"style= "width: 50px" onclick="clickerAI('square7')"></td>
+<td id="square8" style= "width: 50px"onclick="clickerAI('square8')"></td>
+<td id="square9" style= "width: 50px"onclick="clickerAI('square9')"></td>
+</tr></table>
+
+<h1 id= "h1"></h1>
+
+</body>
+
+<script>
+
+var square1
+var square2
+var square3
+var square4
+
+function abcidclicker(id) {
+    document.getElementById(id).innerHTML = "O";
+    document.getElementById(id).onclick = null;
+    switch(id) {
+        case "square1":
+            square1 = "O";
+            break;
+        case "square2":
+            square2 = "O";
+            break;
+        case "square3":
+            square3 = "O";
+            break;
+        case "square4":
+            square4 = "O";
+            break;
+        case "square5":
+            square5 = "O";
+            break;
+        case "square6":
+            square6 = "O";
+            break;
+        case "square7":
+            square7 = "O";
+            break;
+        case "square8":
+            square8 = "O";
+            break;
+        case "square9":
+            square9 = "O";
+            break;
+        default:
+            break;
+    }}
+
+
+
+
+var square5
+var square6
+var square7
+var square8
+var square9
+//keeps track of moves
+var moves = 0
+
+var IDs =["square1", "square2","square3", "square4","square5", "square6","square7", "square8","square9"];
+
+
+//handle a click on a cell/square
+function clicker(id) {
+
+
+//check if moves are even, for user X
+if (moves==0 || moves==2 || moves%2== 0){
+	document.getElementById(id).innerHTML="X"
+	
+
+}
+//else must be user O
+else document.getElementById(id).innerHTML="O"
+
+document.getElementById(id).onclick=null
+	
+moves++
+
+if (moves == 9) {
+		userX();
+		document.getElementById("h1").innerHTML="IT IS A DRAW!"
+		unclick()
+
+	}
+
+userX()
+
+}
+
+
+
+function state() {
+//make variables for individual cells, to make statements
+//easier for readibility 
+
+square1 = document.getElementById("square1").innerHTML
+
+square2 = document.getElementById("square2").innerHTML
+
+square3 = document.getElementById("square3").innerHTML
+
+square4 = document.getElementById("square4").innerHTML
+
+
+
+
+square5 = document.getElementById("square5").innerHTML
+
+square6 = document.getElementById("square6").innerHTML
+
+square7 = document.getElementById("square7").innerHTML
+
+//Adds click event listeners to all squares
+
+
+square8 = document.getElementById("square8").innerHTML
+
+square9 = document.getElementById("square9").innerHTML
+
+}
+
+//checks for userX victory
+function userX(){
+
+	state();
+
+	if (square1 == "X" && square2 =="X" && square3 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+		
+	}
+
+	if (square4 == "X" && square5 =="X" && square6 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+
+	if (square7== "X" && square8 =="X" && square9== "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+
+
+	if (square1 == "X" && square5 =="X" && square9 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+
+	if (square1 == "X" && square4 =="X" && square7 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+	if (square2 == "X" && square5 =="X" && square8== "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+	if (square3 == "X" && square6 =="X" && square9 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+	}
+
+	if (square7 == "X" && square5 =="X" && square3 == "X"){
+		document.getElementById("h1").innerHTML="YOU WIN!"
+		unclick()
+
+
+	}
+
+
+	userO()
+
+
+
+}
+
+function intilizaer(id) {
+    document.getElementById(id).innerHTML = "O";
+    document.getElementById(id).onclick = null;
+    switch(id) {
+        case "square1":
+            square1 = "O";
+            break;
+        case "square2":
+            square2 = "O";
+            break;
+        case "square3":
+            square3 = "O";
+            break;
+        case "square4":
+            square4 = "O";
+            break;
+        case "square5":
+            square5 = "O";
+            break;
+        case "square6":
+            square6 = "O";
+            break;
+        case "square7":
+            square7 = "O";
+            break;
+        case "square8":
+            square8 = "O";
+            break;
+        case "square9":
+            square9 = "O";
+            break;
+        default:
+            break;
+    }}
+
+
+
+//analyzes to see whether userO won
+function userO(){
+
+
+	if (square1 == "O" && square2 =="O" && square3 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+	}
+
+
+	if (square4 == "O" && square5 =="O" && square6 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+
+	}
+
+	if (square7== "O" && square8 =="O" && square9== "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+	}
+
+	if (square1 == "O"&& square5 =="O" && square9 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+
+	}
+
+	if (square1 == "O" && square4 =="O" && square7 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+
+	}
+	if (square2 == "O" && square5 =="O" && square8== "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+		
+	}
+	if (square3 == "O"&& square6 =="O"&& square9 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+
+	}
+
+	if (square7 == "O" && square5 =="O" && square3 == "O"){
+		document.getElementById("h1").innerHTML="AI WINS!"
+		unclick()
+
+	}
+	
+
+	
+
+
+}
+
+//Makes all squares unclickable
+function unclick(){
+	for (var i = 1; i <10; i++) {
+		document.getElementById("square" + i).onclick =null
+	};
+}
+
+
+
+
+function clickerAI(id) {
+
+	document.getElementById(id).innerHTML="X"
+
+	document.getElementById(id).onclick=null
+
+	var index = IDs.indexOf(id)
+
+	IDs.splice(index, 1)
+
+
+	moves++
+
+
+	if (moves < 8) {
+		AI()
+	}
+	
+
+
+	if (moves == 9) {
+		document.getElementById("h1").innerHTML="IT IS A DRAW!"
+		unclick()
+
+	}
+
+	moves++
+	userX()
+
+	
+
+
+}
+
+
+//AI figures out where to make its move
+function AI(){
+
+	len = IDs.length - 1
+	rand = Math.random()
+	random = Math.round(rand * len)
+
+
+	target = IDs[random]
+	document.getElementById(target).innerHTML="O"
+	document.getElementById(target).onclick=null
+
+	index = IDs.indexOf(target)
+	IDs.splice(index, 1)
+
+
+	
+
+
+}
+
+
+</script>
+</html>
